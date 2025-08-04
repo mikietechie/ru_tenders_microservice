@@ -23,6 +23,7 @@ A Python app for scraping tenders, storing them and sharing them via REST API.
       4. `source env/bin/activate`
       5. `pip install -r requirements.txt`
       6. `cd src`
+      7. Maybe setup environment variables in a *.env* file
    2. Run Server
       - `python3 main.py`
    3. Scrape Tenders
