@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: src
+    volumes:
+      - ./src:/src
+    depends_on:
+      - selenium_chrome
+    ports:
+      - "8000:800"
+    # env_file:
+    #   - .env
+    environment:
+      - SELENIUM_CHROME_URI=http://selenium_chrome:4444
+    container_name: parser
+
+  selenium_chrome:
+    image: selenium/standalone-chrome:latest
+    environment:
+      - SE_NODE_MAX_SESSIONS=4
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+    ports:
+      - "4444:4444"
+      - "49002:7900"
+    container_name: selenium_chrome
+    shm_size: 6g

@@ -21,6 +21,7 @@ class TenderRowParserUtility:
     def get_tender(self) -> Tender:
         """..."""
         return Tender(
+            id=None,
             number=self.get_tender_number(),
             description=self.get_tender_description(),
             link=self.get_tender_link(),
@@ -60,9 +61,9 @@ class TenderRowParserUtility:
         """..."""
         text_el = self.row_el.find_element(
             by=By.CSS_SELECTOR,
-            value="div.tender-date-info.tender-date-end.tender__date-end",
+            value="div.tender-date-info.tender-date-end.tender__date-end .tender__countdown-text",
         )
-        text = text_el.text.strip()
+        text = text_el.get_attribute("innerText").strip()
         return text
 
     def get_tender_region(self) -> str:
@@ -78,7 +79,7 @@ class TenderRowParserUtility:
         """..."""
         text_el = self.row_el.find_element(
             by=By.CSS_SELECTOR,
-            value="div.starting-price__price starting-price--price",
+            value="div.starting-price__price.starting-price--price",
         )
         text = text_el.text.strip()
         return text

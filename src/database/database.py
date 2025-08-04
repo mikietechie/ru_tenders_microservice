@@ -34,7 +34,6 @@ class Database:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     number VARCHAR(255) NOT NULL,
                     link VARCHAR(255) NOT NULL,
-                    buyer VARCHAR(255) NOT NULL,
                     description VARCHAR(255) NOT NULL,
                     end_date VARCHAR(255) NOT NULL,
                     starting_price VARCHAR(255) NOT NULL,
@@ -59,19 +58,21 @@ class Database:
 
         Parameters
         ---
-        tenders: [(number, link, buyer, description, end_date)]
+        tenders: [TenderRow]
         """
+        id_rows = self.cursor.execute("SELECT number FROM tenders;").fetchall()
+        ids = [id_row[0] for id_row in id_rows]
+        rows = [row for row in rows if row[0] not in ids]
         sql_qs = """
                 INSERT INTO tenders (
                     number,
                     link,
-                    buyer,
                     description,
                     end_date,
                     starting_price,
                     region)
                 VALUES
-                    (?, ?, ?, ?, ?, ?, ?);
+                    (?, ?, ?, ?, ?, ?);
         """
         self.cursor.executemany(
             sql_qs,
@@ -100,7 +101,6 @@ class Database:
                     id,
                     number,
                     link,
-                    buyer,
                     description,
                     end_date,
                     starting_price,

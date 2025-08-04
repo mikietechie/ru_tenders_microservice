@@ -25,7 +25,7 @@ class CliService:
         """..."""
         args_num = len(args)
         arg0 = args[0]
-        if args == "scrape":
+        if arg0 == "scrape":
             self.handle_scrape()
             return
         if arg0 == "--max":

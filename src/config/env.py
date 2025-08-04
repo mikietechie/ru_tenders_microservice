@@ -19,7 +19,9 @@ ROSTENDER_SITE: str = config.get(
     "ROSTENDER_SITE",
     "https://rostender.info/extsearch?page=1",
 )
+ROSTENDERS_PER_PAGE: int = int(config.get("ROSTENDERS_PER_PAGE", "20"))
+TENDERS_COUNT: int = int(config.get("TENDERS_COUNT", "100"))
 CHROME_DRIVER: str = config.get(
-    "CHROME_DRIVER",
-    "../chromedriver",
+    "SELENIUM_CHROME_URI",
+    "http://localhost:4444",
 )

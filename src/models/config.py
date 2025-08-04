@@ -16,4 +16,6 @@ class Config(BaseModel):
     port: int
     debug: bool
     rostender_site: str
+    tenders_per_page: int
+    tenders_count: int
     chrome_driver: str

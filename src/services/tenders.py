@@ -16,7 +16,7 @@ class TendersService:
 
     def create_tenders(self, tenders: tp.List[Tender]) -> int:
         """..."""
-        self.db.insert_tenders([t.get_tender_as_row() for t in tenders])
+        self.db.insert_tenders([t.get_tender_as_row()[1:] for t in tenders])
         self.db.commit()
 
     def find_tenders(self, limit: int, offset: int = 0) -> tp.List[Tender]:

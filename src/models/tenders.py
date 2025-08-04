@@ -31,7 +31,6 @@ class Tender(BaseModel):
     id: tp.Optional[int]
     number: str
     link: str
-    buyer: str
     description: str
     end_date: str
     starting_price: str
@@ -40,7 +39,15 @@ class Tender(BaseModel):
     @staticmethod
     def get_tender_from_row(row: TenderRow) -> Tender:
         """..."""
-        return Tender(*row)
+        return Tender(
+            id=row[0],
+            number=row[1],
+            link=row[2],
+            description=row[3],
+            end_date=row[4],
+            starting_price=row[5],
+            region=row[6],
+        )
 
     def get_tender_as_row(self) -> TenderRow:
         """..."""
@@ -48,7 +55,6 @@ class Tender(BaseModel):
             self.id,
             self.number,
             self.link,
-            self.buyer,
             self.description,
             self.end_date,
             self.starting_price,
