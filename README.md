@@ -18,7 +18,7 @@ A Python app for scraping tenders, storing them and sharing them via REST API.
 2. How Tos
    1. Work in docker
       1. `cd ru_tenders_microservice`
-      2. `docker compose -f 'docker-compose.yml' up -d --build `
+      2. `docker compose -f 'docker-compose.yml' up -d --build`
    2. Setup environment
       1. Use Python 3.13.5 preferebly on Ubuntu
       2. `cd ru_tenders_microservice`
