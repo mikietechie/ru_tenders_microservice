@@ -14,7 +14,7 @@ services:
     #   - .env
     environment:
       - SELENIUM_CHROME_URI=http://selenium_chrome:4444
-    container_name: parser
+    container_name: app
 
   selenium_chrome:
     image: selenium/standalone-chrome:latest
